@@ -1,0 +1,64 @@
+.block-translate-container {
+    margin-top: 250px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .block-translate {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        width: 1200px;
+        height: 300px;
+
+        background-color: #62656c;
+        border-radius: 15px;
+
+        font-size: 30px;
+    }
+}
+
+.card {
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    text-align: center;
+
+    padding: 10px 20px 15px 20px;
+    border-radius: 10px;
+
+    line-height: 100%;
+    background: #8f9299;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+.confirm {
+    cursor: pointer;
+
+    height: 100%;
+    width: 100px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    text-align: center;
+
+    border-radius: 15px;
+
+    line-height: 100%;
+    background: #8f9299;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}

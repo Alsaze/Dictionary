@@ -1,16 +1,14 @@
 const apiKey = "dict.1.1.20231109T112224Z.29274f5d10012b29.4392e34eeeca675b956085a6d08725a74d626ad4";
 
 const languages = {
-    'ru-en': 'РУССКИЙ-АНГЛИЙСКИЙ',
-    'en-ru': 'АНГЛИЙСКИЙ-РУССКИЙ'
+    'ru-en': 'RUSSIA-ENGLISH',
+    'en-ru': 'ENGLISH-RUSSIA'
 };
 
 let direction = 'en-ru';
 
-let wordsList = [
-    // {en: 'snow', ru: 'снег'},
-    // {en: 'apple', ru: 'яблоко'}
-];
+const wordList = JSON.parse(localStorage.getItem('wordList')) ?? [];
+// let wordList = [];
 
 const input = document.getElementById(`input-word`);
 const answer = document.getElementById(`translation`);
@@ -37,6 +35,7 @@ async function LookUp() {
     } catch (e) {
         console.error(e);
     }
+    addToMyWords();
 }
 
 function switchLanguage() {
@@ -48,7 +47,7 @@ function switchLanguage() {
 }
 
 function renderDirection() {
-    const parent = document.getElementById('switcher').parentElement;
+    const parent = document.querySelector('.switcher').parentElement;
     const children = parent.children;
 
     const langList = languages[direction].split('-');
@@ -56,15 +55,18 @@ function renderDirection() {
     children[2].innerHTML = langList[1];
 }
 
-function buttonSaveList() {
+function addToMyWords() {
     if (input.value === '') return;
     if (answer.textContent === '') return;
-    checkSimilarWords()
-    localStorage.setItem('wordList', JSON.stringify(wordsList));
+    checkSimilarWords();
+}
+function localStorageAppend(newItem) {
+    wordList.push(newItem);
+    localStorage.setItem('wordList', JSON.stringify(wordList));
 }
 
 function checkSimilarWords() {
-    const foundItem = wordsList.find(item => {
+    const foundItem = wordList.find(item => {
         if (direction === 'en-ru') {
             return item.en === input.value;
         } else {
@@ -77,6 +79,6 @@ function checkSimilarWords() {
             en: (direction === 'en-ru') ? input.value : answer.textContent,
             ru: (direction === 'en-ru') ? answer.textContent : input.value
         };
-        wordsList.push(newItem);
+        localStorageAppend(newItem);
     }
 }

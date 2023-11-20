@@ -85,6 +85,7 @@ a:visited {
 a:hover {
     text-decoration: none;
     cursor: pointer;
+    opacity: 0.7;
 }
 
 ul li {
@@ -107,99 +108,44 @@ h6 {
 
 /*--------------------*/
 .container {
-    margin-top: 20px;
     margin-inline: auto;
+}
+
+.header {
+    top: 0;
+
+    position: fixed;
 
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-}
 
-.block-translate {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    width: 100%;
 
-    width: 1200px;
-    height: 300px;
+    .header-content {
+        background-color: #62656c;
+        padding: 20px;
 
-    background-color: #62656c;
-    border-radius: 15px;
+        display: flex;
+        flex-direction: row;
 
-    font-size: 30px;
-}
+        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 15px;
 
-.title {
-    max-width: 1200px;
-    text-align: center;
+        .header-content-block {
+            background-color: #8f9299;
+            color: black;
 
-    background-color: #62656c;
+            padding: 10px;
+            margin-left: 10px;
+            border-radius: 5px;
 
-    font-size: 30px;
-    line-height: 100%;
+            line-height: 100%;
+            font-size: 25px;
+            font-weight: 600;
+        }
 
-    padding: 20px;
-    margin-top: 250px;
-    border-radius: 10px;
-}
-.card {
-    cursor: pointer;
-
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-    text-align: center;
-
-    padding: 10px 20px 15px 20px;
-    border-radius: 10px;
-
-    line-height: 100%;
-    background: #8f9299;
-
-    &:hover {
-        opacity: 0.7;
-    }
-}
-
-.confirm {
-    cursor: pointer;
-
-    height: 100%;
-    width: 100px;
-
-    display: flex;
-    flex-direction: column;
-
-    justify-content: center;
-    text-align: center;
-
-    border-radius: 15px;
-
-    line-height: 100%;
-    background: #8f9299;
-
-    &:hover {
-        opacity: 0.7;
-    }
-}
-
-.button-change-html {
-    max-width: 1200px;
-    margin-top: 20px;
-
-    color: black;
-    background-color: #8f9299;
-    text-align: center;
-
-    padding: 20px;
-    border-radius: 10px;
-
-    font-size: 30px;
-    line-height: 100%;
-
-    &:hover {
-        opacity: 0.7;
+        .header-content-block:first-child {
+            margin-left: 0;
+        }
     }
 }
