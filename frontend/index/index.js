@@ -5,7 +5,7 @@ const languages = {
     'en-ru': 'ENGLISH-RUSSIA'
 };
 
-let direction = 'en-ru';
+let direction = JSON.parse(localStorage.getItem('direction')) ?? 'en-ru';
 
 const wordList = JSON.parse(localStorage.getItem('wordList')) ?? [];
 
@@ -53,6 +53,8 @@ function renderDirection() {
     const langList = languages[direction].split('-');
     children[0].innerHTML = langList[0];
     children[2].innerHTML = langList[1];
+
+    localStorage.setItem('direction', JSON.stringify(direction));
 }
 
 function addToMyWords() {
