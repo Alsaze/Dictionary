@@ -24,9 +24,29 @@
         line-height: 100%;
         text-align: center;
 
+        .img-positive {
+          background-color: green;
+          border-radius: 50%;
+        }
+
+        .img-negative {
+          background-color: red;
+          border-radius: 50%;
+        }
+
+        .img-unmark {
+          background-color: transparent;
+          border-radius: 50%;
+        }
+
+        img {
+          width: 25px;
+          height: 25px;
+        }
+
         button {
           background: transparent;
-          border-radius: 50%;
+          border-radius: 10px;
           width: 30px;
           height: 30px;
 

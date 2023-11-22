@@ -20,9 +20,25 @@
   line-height: 100%;
   text-align: center;
 }
+.table .table-content tr td .img-positive {
+  background-color: green;
+  border-radius: 50%;
+}
+.table .table-content tr td .img-negative {
+  background-color: red;
+  border-radius: 50%;
+}
+.table .table-content tr td .img-unmark {
+  background-color: transparent;
+  border-radius: 50%;
+}
+.table .table-content tr td img {
+  width: 25px;
+  height: 25px;
+}
 .table .table-content tr td button {
   background: transparent;
-  border-radius: 50%;
+  border-radius: 10px;
   width: 30px;
   height: 30px;
 }

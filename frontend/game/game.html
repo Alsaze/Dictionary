@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="game.css">
     <link rel="stylesheet" href="../css/header.css">
-    <title>Remember</title>
+    <title>Game</title>
 </head>
 <body>
 <div class="header">
@@ -21,28 +21,27 @@
                 Translate
             </a>
             <a href="../words/words.html" class="header-content-block">
-                My Words
+                Words
             </a>
             <a href="game.html" class="header-content-block">
-                Practic
+                Game
             </a>
         </div>
     </div>
 </div>
 
-<div class="block-translate-container">
-    <div class="block-translate">
-        <div class="confirm" onclick="buttonNo()">
-            no
+<div class="block-translate-container container">
+    <div class="head">
+        <div id="card">...</div>
+        <div>
+            <input id="validate-input" type="text" onchange="validate()" placeholder="your answer">
         </div>
+    </div>
 
-        <div class="card" onclick="buttonCheckTranslate()">
-            some words
-        </div>
-
-        <div class="confirm" onclick="buttonYes()">
-            yes
-        </div>
+    <div class="foot">
+        <button onclick="buttonUnconfirmed()">unconfirmed</button>
+        <button onclick="buttonConfirmed()">confirmed</button>
+        <button onclick="buttonNext()">next</button>
     </div>
 </div>
 </body>

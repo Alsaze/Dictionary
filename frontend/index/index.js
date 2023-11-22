@@ -8,7 +8,6 @@ const languages = {
 let direction = 'en-ru';
 
 const wordList = JSON.parse(localStorage.getItem('wordList')) ?? [];
-// let wordList = [];
 
 const input = document.getElementById(`input-word`);
 const answer = document.getElementById(`translation`);
@@ -34,6 +33,7 @@ async function LookUp() {
         answer.textContent = data.def[0].tr[0].text;
     } catch (e) {
         console.error(e);
+        return
     }
     addToMyWords();
 }
@@ -58,8 +58,10 @@ function renderDirection() {
 function addToMyWords() {
     if (input.value === '') return;
     if (answer.textContent === '') return;
+    console.log(answer.textContent);
     checkSimilarWords();
 }
+
 function localStorageAppend(newItem) {
     wordList.push(newItem);
     localStorage.setItem('wordList', JSON.stringify(wordList));
@@ -77,7 +79,8 @@ function checkSimilarWords() {
     if (!foundItem) {
         const newItem = {
             en: (direction === 'en-ru') ? input.value : answer.textContent,
-            ru: (direction === 'en-ru') ? answer.textContent : input.value
+            ru: (direction === 'en-ru') ? answer.textContent : input.value,
+            state: 'unmark'
         };
         localStorageAppend(newItem);
     }

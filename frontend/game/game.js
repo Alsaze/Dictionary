@@ -1,5 +1,5 @@
 const wordList = JSON.parse(localStorage.getItem('wordList')) ?? [];
-let text = document.querySelector('.card');
+let text = document.getElementById('card');
 
 renderWord();
 
@@ -12,32 +12,41 @@ function renderWord() {
     }
 }
 
-function buttonCheckTranslate() {
-    try {
-        if (text.innerHTML === (wordList[0].ru)) {
-            text.innerHTML = (wordList[0].en);
-        } else {
-            text.innerHTML = (wordList[0].ru);
-        }
-    } catch (e) {
-        console.log(e);
-    }
-}
-
-function buttonNo() {
+function buttonUnconfirmed() {
     const tempWord = wordList.shift();
-    wordList.push(tempWord);
-    localStorage.setItem('wordList', JSON.stringify(wordList));
+    tempWord.state = 'negative';
     renderWord();
+    wordList.push(tempWord);
 
+    localStorage.setItem('wordList', JSON.stringify(wordList));
 }
 
-function buttonYes() {
-    try {
-        wordList.shift();
-        localStorage.setItem('wordList', JSON.stringify(wordList));
-        renderWord();
-    } catch (e) {
-        console.log(e);
+function buttonConfirmed() {
+    const tempWord = wordList.shift();
+    tempWord.state = 'positive';
+    renderWord();
+    wordList.push(tempWord);
+
+    localStorage.setItem('wordList', JSON.stringify(wordList));
+}
+
+function buttonNext() {
+    const tempWord = wordList.shift();
+    renderWord();
+    wordList.push(tempWord);
+
+    localStorage.setItem('wordList', JSON.stringify(wordList));
+}
+
+function validate() {
+    const input = document.getElementById(`validate-input`);
+    if (input.value === '') return;
+
+    if (wordList[0].ru === input.value) {
+        console.log('good');
+        input.value = '';
+        buttonConfirmed();
+    } else {
+        console.log('bad');
     }
 }
